@@ -1,4 +1,4 @@
-from music_reports import *
+from music_colector2 import*
 
 
 def menu():
@@ -40,5 +40,3 @@ def main():
 
 
 main()
-
-#kurwa nie działa
