@@ -1,7 +1,6 @@
 
 
-# all imported albums
-def all_albums(file_name):
+def find_all_albums(file_name):
     all_albums = []
     with open(file_name, "r") as file:
         for line in file:
@@ -11,8 +10,7 @@ def all_albums(file_name):
         return "\n".join(all_albums)
 
 
-# find all albums by genre
-def albums_by_genre(file_name, genre):
+def find_albums_by_genre(file_name, genre):
     genres_dictionary = {}
     albums = []
     with open(file_name, "r") as file:
@@ -26,8 +24,7 @@ def albums_by_genre(file_name, genre):
         return "\n".join(albums)
 
 
-#find all albums from given time range
-def albums_by_time_range(file_name, year1, year2):
+def find_albums_by_time_range(file_name, year1, year2):
     albums_dictionary = {}
     albums = []
     with open(file_name, "r") as file:
@@ -41,8 +38,7 @@ def albums_by_time_range(file_name, year1, year2):
         return "\n".join(albums)
 
 
-# find shortest/longest album
-def shortest_longest_album(file_name, parameter):
+def find_shortest_longest_album(file_name, parameter):
     with open(file_name, "r") as file:
         albums = []
         for line in file:
@@ -50,15 +46,21 @@ def shortest_longest_album(file_name, parameter):
             all_info = all_info.replace(":", ".")
             all_info = all_info.split(",")
             albums.append((float(all_info[4]), all_info[1]))
+            range_of_sort = 1
         if parameter == "shortest":
             albums = sorted(albums)
-            return albums[0][1]
+            top_shortest = []
+            for index in range(3):
+                top_shortest.append(albums[index][range_of_sort])
+            return top_shortest
         if parameter == "longest":
             albums = sorted(albums, reverse=True)
-            return albums[0][1]
+            top_longest = []
+            for index in range(3):
+                top_longest.append(albums[index][range_of_sort])
+            return top_longest
 
 
-#find all albums created by given artist
 def find_albums_by_artist(file_name, artist):
     with open(file_name, "r") as file:
         albums_dictionary = {}
